@@ -54,6 +54,9 @@ import (
 	_ "github.com/Azure/azqr/internal/scanners/evh"
 	_ "github.com/Azure/azqr/internal/scanners/fabric"
 	_ "github.com/Azure/azqr/internal/scanners/fdfp"
+
+	// Internal plugins
+	_ "github.com/Azure/azqr/internal/scanners/plugins/fabric"
 	_ "github.com/Azure/azqr/internal/scanners/gal"
 	_ "github.com/Azure/azqr/internal/scanners/hpc"
 	_ "github.com/Azure/azqr/internal/scanners/hub"

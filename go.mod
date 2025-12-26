@@ -56,6 +56,7 @@ require (
 	github.com/iancoleman/strcase v0.3.0
 	github.com/invopop/jsonschema v0.13.0
 	github.com/metoro-io/mcp-golang v0.14.0
+	github.com/microsoft/fabric-sdk-go v0.1.0-beta.15
 	github.com/rs/zerolog v1.34.0
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
