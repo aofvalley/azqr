@@ -1104,6 +1104,14 @@
 		"resourceType": "Microsoft.Fabric/capacities"
 	},
 	{
+		"category": "Governance",
+		"impact": "Medium",
+		"learnMoreUrl": "https://learn.microsoft.com/en-us/fabric/enterprise/licenses",
+		"recommendation": "Fabric Capacity should use Fabric (F) SKU tier for production workloads",
+		"recommendationId": "fabric-007",
+		"resourceType": "Microsoft.Fabric/capacities"
+	},
+	{
 		"category": "MonitoringAndAlerting",
 		"impact": "Low",
 		"learnMoreUrl": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-monitor-log-analytics?tabs=csharp",
