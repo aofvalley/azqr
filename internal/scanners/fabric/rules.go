@@ -96,5 +96,21 @@ func (a *FabricScanner) GetRecommendations() map[string]models.AzqrRecommendatio
 			},
 			LearnMoreUrl: "https://learn.microsoft.com/en-us/fabric/admin/capacity-settings",
 		},
+		"fabric-007": {
+			RecommendationID: "fabric-007",
+			ResourceType:     "Microsoft.Fabric/capacities",
+			Category:         models.CategoryGovernance,
+			Recommendation:   "Fabric Capacity should use Fabric (F) SKU tier for production workloads",
+			Impact:           models.ImpactMedium,
+			Eval: func(target interface{}, scanContext *models.ScanContext) (bool, string) {
+				c := target.(*armfabric.Capacity)
+				if c.SKU != nil && c.SKU.Tier != nil {
+					tier := string(*c.SKU.Tier)
+					return tier != "Fabric", tier
+				}
+				return true, "Unknown"
+			},
+			LearnMoreUrl: "https://learn.microsoft.com/en-us/fabric/enterprise/licenses",
+		},
 	}
 }

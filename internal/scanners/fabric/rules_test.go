@@ -201,6 +201,52 @@ func TestFabricScanner_Rules(t *testing.T) {
 				result: "",
 			},
 		},
+		{
+			name: "FabricScanner Fabric tier",
+			fields: fields{
+				rule: "fabric-007",
+				target: &armfabric.Capacity{
+					SKU: &armfabric.RpSKU{
+						Name: to.Ptr("F2"),
+						Tier: to.Ptr(armfabric.RpSKUTierFabric),
+					},
+				},
+				scanContext: &models.ScanContext{},
+			},
+			want: want{
+				broken: false,
+				result: "Fabric",
+			},
+		},
+		{
+			name: "FabricScanner Non-Fabric tier",
+			fields: fields{
+				rule: "fabric-007",
+				target: &armfabric.Capacity{
+					SKU: &armfabric.RpSKU{
+						Name: to.Ptr("P1"),
+						Tier: to.Ptr(armfabric.RpSKUTier("Premium")),
+					},
+				},
+				scanContext: &models.ScanContext{},
+			},
+			want: want{
+				broken: true,
+				result: "Premium",
+			},
+		},
+		{
+			name: "FabricScanner Missing SKU",
+			fields: fields{
+				rule:        "fabric-007",
+				target:      &armfabric.Capacity{},
+				scanContext: &models.ScanContext{},
+			},
+			want: want{
+				broken: true,
+				result: "Unknown",
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
